@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+
+</head>
+<body>
+    <h1>Dias sin que Noelia me haga un marcapaginas: </h1>
+    
+    <p><span id="years"></span> años <span id="meses"></span> meses <span id="semanas"></span> semanas <span id="dias" ></span> dias <span id="horas"></span> horas <span id="minutos"></span> minutos <span id="segundos"></span> segundos </p>
+    
+    <script> 
+    setInterval(()=>{
+        var date = new Date(1663925460000)
+        var d = Math.abs(date.getTime() - new Date().getTime()) / 1000;                 // delta
+            var r = {};                                                                // result
+            var s = {                                                                  // structure
+                year: 31536000,
+                month: 2592000,
+                week: 604800, // uncomment row to ignore
+                day: 86400,   // feel free to add your own row
+                hour: 3600,
+                minute: 60,
+                second: 1
+            };
+
+            Object.keys(s).forEach(function(key){
+                r[key] = Math.floor(d / s[key]);
+                d -= r[key] * s[key];
+
+            });
+            ///console.log("sad")
+            document.getElementById("years").innerHTML = r.year
+            document.getElementById("meses").innerHTML = r.month
+            document.getElementById("semanas").innerHTML = r.week
+            document.getElementById("dias").innerHTML = r.day
+            document.getElementById("horas").innerHTML = r.hour
+            document.getElementById("minutos").innerHTML = r.minute
+            document.getElementById("segundos").innerHTML = r.second
+    }, 1000)
+    
+    </script>
+</body>
+</html>
+
+
+
